@@ -1,0 +1,63 @@
+/* style-devotionals.css */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .devotionals-box {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    width: 100%;
+    height: 600px;
+    background-color: #ccffcc;
+  }
+  .box-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .box-textarea {
+    width: 100%;
+    padding: 100px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 500px;
+    resize: none;
+  }.footer {
+    background-color: #2b0325;
+    color: #ffffff;
+    padding: 1em;
+    text-align: center;
+    clear: both;
+  }
+  .footer-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+
+    /* responsive design */
+  @media only screen and (max-width: 768px) {
+    .devotionals-box {
+      height: 400px;
+    }
+    .box-textarea {
+      height: 300px;
+    }
+  }
+  @media only screen and (max-width: 480px) {
+    .devotionals-box {
+      height: 300px;
+    }
+    .box-textarea {
+      height: 200px;
+    }
+  }
+  

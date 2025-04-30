@@ -5,39 +5,86 @@ body {
   color: #333;
   background-color: #f9f9f9;
 }
-.left-box {
-  background-image: url("left-box-background.jpg");
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center;
 }
-.right-box {
-  background-image: url("right-box-background.jpg");
+.navbar {
+  background-color: #660033;
+}
+.navbar-nav .nav-link {
+   color: #ffffff;
+}
+.navbar-toggler-icon {
+   color:#ffffff;
+}
+.square {
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 100%;
+}
+.salvation {
+  background-color: #ffcccc;
+}
+.faith {
+  background-color: #ffe6cc;
+}
+.discipleship {
+  background-color: #ffffcc;
+}
+.transformation {
+  background-color: #ccffcc;
+}
+.love {
+  background-color: #ff99cc;
+}
+.relationship {
+  background-color: #cc99ff;
+}
+.godliness {
+  background-color: #99ccff;
+}
+.intimacy {
+  background-color: #ccccff;
 }
 .box-title {
-  font-size: 24px;
+  font-size: 18px;
   margin-bottom: 10px;
 }
 .box-textarea {
   width: 100%;
-  padding: 10px;
-  font-size: 18px;
+  padding: 5px;
+  font-size: 14px;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .footer {
-  background-color: #333;
-  color: #fff;
+  background-color: #2b0325;
+  color: #ffffff;
   padding: 1em;
   text-align: center;
   clear: both;
 }
 .footer-text {
-  font-size: 18px;
+  font-size: 14px;
   margin-bottom: 10px;
+}
+/* responsive design */
+@media only screen and (max-width: 768px) {
+  .square {
+    height: 200px;
+    margin: 10px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .square {
+    height: 150px;
+    margin: 10px;
+  }
 }

@@ -2,35 +2,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Comments - GOD HEALS</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Comments</title>
+  <link rel="stylesheet" href="style-comments.css">
+  <script src="https://cdn.jsdelivr.net/npm/socket.io@2.3.0/dist/socket.io.js"></script>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="devotionals.html">Devotionals</a></li>
-        <li><a href="videos.html">Videos</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="uplifting.html">Encouraging</a></li>
-        <li><a href="inbox.html">Inbox</a></li>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #660033;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
       </ul>
-    </nav>
-  </header>
-  <main>
-    <h1>Comments</h1>
-    <p>This is the comments page, where you can share your thoughts and feedback.</p>
-    <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name"><br><br>
-      <label for="comment">Comment:</label>
-      <textarea id="comment" name="comment"></textarea><br><br>
-      <input type="submit" value="Submit">
-    </form>
-  </main>
-  <footer>
-    <p>&copy; 2025 GOD HEALS</p>
-  </footer>
+    </div>
+  </nav>
+  <div class="container">
+    <h1 class="title" style="text-align: center; margin-top: 20px; margin-bottom: 20px;">Comments</h1>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="comments-box">
+          <ul id="comments-list" style="list-style: none; padding: 0; margin: 0;"></ul>
+          <input id="comment-input" type="text" placeholder="Type a comment...">
+          <button id="send-comment-button">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var socket = io();
+    var commentsList = document.getElementById('comments-list');
+    var commentInput = document.getElementById('comment-input');
+    var sendCommentButton = document.getElementById('send-comment-button');
+    sendCommentButton.addEventListener('click', function() {
+      var comment = commentInput.value;
+      socket.emit('new comment', comment);
+      commentInput.value = '';
+    });
+    socket.on('new comment', function(comment) {
+      var li = document.createElement('li');
+      li.textContent = comment;
+      commentsList.appendChild(li);
+    });
+  </script>
 </body>
 </html>

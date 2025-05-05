@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Comment</title>
+  <link rel="stylesheet" href="../css/comments.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #ffb18a;">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="chat-box">   
+     <h1 class="title text-center mt-4 mb-3">Comment 💬</h1>
+    <div id="messages" class="messages"></div>
+    <div class="d-flex mt-2">
+      <input id="message-input" type="text" placeholder="Type your message..." class="form-control mr-2" />
+      <button onclick="sendMessage()" class="btn btn-success" style="min-width: 80px;">Send</button>
+    </div>
+  </div>
+  
+  </div>
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>

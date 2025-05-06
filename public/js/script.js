@@ -1,4 +1,10 @@
+let mySocketId;
+
 const socket = io();
+
+socket.on('connect', () => {
+  mySocketId =socket.id;
+});
 
 const messageContainer = document.getElementById('messages');
 const input = document.getElementById('message-input');
@@ -8,7 +14,8 @@ socket.on('chatLog', (messages) => {
 });
 
 socket.on('message', (data) => {
-  addMessage(data.text, data.time, data.sender);
+  const sender = data.sender === mySocketId ? 'me' : 'other';
+  addMessage(data.text, data.time, sender);
 });
 
 function sendMessage() {
@@ -16,19 +23,23 @@ function sendMessage() {
   if (!message) return;
 
   const time = new Date().toLocaleTimeString();
-  const sender = 'me';
 
-  socket.emit('message', { text: message, time, sender });
-  addMessage(message, time, sender);
+  socket.emit('message', { text: message, time, sender: 'mySocketId' });
   input.value = '';
 }
 
 function addMessage(text, time, sender) {
   const msgDiv = document.createElement('div');
-  msgDiv.classList.add('message', sender === 'me' ? 'sent' : 'received');
+  msgDiv.classList.add('message');
+
+  if (sender === 'me') {
+    msgDiv.classList.add('sent');
+  } else {
+    msgDiv.classList.add('received');
+  }
   msgDiv.innerHTML = `
     <div>${text}</div>
-    <div class="timestamp">${time}</div>
+    <span class="timestamp">${time}</span>
   `;
   messageContainer.appendChild(msgDiv);
   messageContainer.scrollTop = messageContainer.scrollHeight;

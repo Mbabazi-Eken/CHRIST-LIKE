@@ -1,10 +1,23 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
-
+const mongoose = require('mongoose');
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
+
+mongoose.connect('mongodb://localhost:27017/chatApp', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.log('Error connecting to MongoDB:', err));
+
+// schema for sms
+const messageSchema = new mongoose.Schema({
+  text: String,
+  sender: String,
+  time: String
+});
+
+const Message = mongoose.model('Message', messageSchema);
 
 let chatLog = [];
 app.use(express.static('public'));
@@ -20,7 +33,7 @@ io.on('connection', (socket) => {
     const message = {
       text: data.text,
       time: data.time,
-      sender: data.sender === 'me' ? 'you' : 'me'
+      sender: socket.id
     };
 
     chatLog.push(message);

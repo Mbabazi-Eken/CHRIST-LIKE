@@ -1,50 +1,54 @@
-/* music.css */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
-  }
-  .praise-music {
-    background-image: url("praise-music-background.jpg");
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  .worship-music {
-    background-image: url("worship-music-background.jpg");
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  .music-title {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-  .praise-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  .worship-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  .praise-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .worship-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .praise-list li {
-    margin-bottom: 10px;
-  }
-  .worship-list li {
-    margin-bottom: 10px;
-  }
-  
+.music-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.music-section {
+  flex: 1;
+  min-width: 300px;
+  background-color: #f0fdf4;
+  border: 1px solid #cce7d0;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.music-section h2 {
+  font-size: 1.5em;
+  color: #1a7e4b;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.song-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.song-list li {
+  margin-bottom: 20px;
+}
+
+.song-list span {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.song-list a {
+  display: inline-block;
+  margin-top: 5px;
+  background-color: #8adeff;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+.song-list a:hover {
+  background-color: #66c6e8;
+}
+

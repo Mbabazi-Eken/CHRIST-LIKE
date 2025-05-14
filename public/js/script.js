@@ -3,7 +3,7 @@ let mySocketId;
 const socket = io();
 
 socket.on('connect', () => {
-  mySocketId =socket.id;
+  mySocketId = socket.id;
 });
 
 const messageContainer = document.getElementById('messages');
@@ -13,7 +13,7 @@ socket.on('chatLog', (messages) => {
   messages.forEach(msg => addMessage(msg.text, msg.time, msg.sender));
 });
 
-socket.on('message', (data) => {
+socket.on('inboxMessage', (data) => {
   const sender = data.sender === mySocketId ? 'me' : 'other';
   addMessage(data.text, data.time, sender);
 });
@@ -24,7 +24,14 @@ function sendMessage() {
 
   const time = new Date().toLocaleTimeString();
 
-  socket.emit('message', { text: message, time, sender: 'mySocketId' });
+  socket.emit('inboxMessage', {
+    text: message,
+    time,
+    sender: mySocketId,
+    roomId: 'comments', // use a fixed room name for public comments
+    socketId: mySocketId
+  });
+
   input.value = '';
 }
 
